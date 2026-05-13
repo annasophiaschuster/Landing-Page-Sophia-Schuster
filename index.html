@@ -581,6 +581,15 @@ footer{
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60), {passive:true});
 
+// Nav links: smooth scroll without changing the URL
+document.querySelectorAll('.n-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({behavior: 'smooth'});
+  });
+});
+
 // ── Scroll reveal ──
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
