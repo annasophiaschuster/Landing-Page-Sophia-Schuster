@@ -307,22 +307,82 @@ footer{
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:translateY(0)}
 
+/* ── HAMBURGER ── */
+.ham{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px;
+  position:absolute;right:20px;top:50%;transform:translateY(-50%);
+}
+.ham span{display:block;height:1.5px;background:var(--off);transition:all .3s;transform-origin:center}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mob-menu{
+  display:none;position:fixed;inset:0;z-index:299;
+  background:rgba(30,22,18,.97);backdrop-filter:blur(16px);
+  flex-direction:column;align-items:center;justify-content:center;gap:40px;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{
+  font-family:'Playfair Display',serif;font-size:clamp(28px,8vw,48px);
+  font-weight:700;color:var(--off);text-decoration:none;letter-spacing:-.02em;
+  transition:color .3s;
+}
+.mob-menu a:hover{color:var(--wine)}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  nav{padding:16px 20px}
+  /* Nav */
+  nav{padding:16px 20px;position:relative}
   .n-links,.n-cta{display:none}
-  .h-label{display:none}
-  .h-photo{width:56vw}
-  .h-sophia-bg,.h-bottom{font-size:18vw}
-  .section-dark,.section-light,.section-grey,.section-wine{padding:64px 24px}
+  .ham{display:flex}
+
+  /* Hero */
+  .hero{padding:80px 0 40px;gap:0}
+  .h-photo{width:74vw}
+  .h-sophia-bg,.h-bottom{font-size:20vw}
+  .h-tagline{font-size:10px;letter-spacing:.18em;margin-top:20px}
+  .h-contact{flex-direction:column;align-items:center;gap:8px;margin-top:12px}
+  .h-contact a,.h-contact span{padding:0;border-left:none}
+
+  /* Sections */
+  .section-dark,.section-light,.section-grey,.section-wine{padding:60px 20px}
+  .s-title{margin-bottom:40px}
+
+  /* Timeline */
   .tl{margin-left:0;border-left:none}
-  .tl-meta{position:static;text-align:left;width:auto;padding:0 0 8px}
+  .tl-meta{position:static;text-align:left;width:auto;padding:0 0 6px}
   .tl-dot{display:none}
-  .tl-item{padding:32px 0}
+  .tl-item{padding:28px 0}
+  .tl-item+.tl-item{border-top:0.5px solid rgba(244,240,232,.08)}
+  .tl-role{font-size:18px}
+
+  /* Skills */
   .k-grid{grid-template-columns:1fr}
+  .k-card{padding:32px 24px}
+
+  /* Languages */
   .lang-row{flex-direction:column}
+  .lang-block{padding:24px}
+
+  /* Education */
   .edu-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:10px;text-align:center;padding:22px}
+  .edu-card{padding:28px 24px}
+
+  /* Interests */
+  .int-pills{gap:8px}
+  .pill{padding:10px 18px;font-size:11px}
+
+  /* Contact */
+  .ct-btns{flex-direction:column;align-items:center}
+  .ct-btn{width:100%;max-width:300px;text-align:center;padding:16px 24px}
+
+  /* Marquee */
+  .mq-item{font-size:clamp(14px,4.5vw,22px);padding:8px 20px}
+
+  /* Footer */
+  footer{flex-direction:column;gap:8px;text-align:center;padding:20px}
 }
 </style>
 </head>
@@ -337,7 +397,19 @@ footer{
     <li><a href="#interessen">Interessen</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <button class="ham" id="ham" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#erfahrung">Erfahrungen</a>
+  <a href="#kompetenzen">Kompetenzen</a>
+  <a href="#bildung">Bildung</a>
+  <a href="#interessen">Interessen</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -582,12 +654,25 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60), {passive:true});
 
 // Nav links: smooth scroll without changing the URL
-document.querySelectorAll('.n-links a').forEach(link => {
+document.querySelectorAll('.n-links a, .mob-menu a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
     if (target) target.scrollIntoView({behavior: 'smooth'});
+    // close mobile menu if open
+    ham.classList.remove('open');
+    mobMenu.classList.remove('open');
+    document.body.style.overflow = '';
   });
+});
+
+// Hamburger menu toggle
+const ham = document.getElementById('ham');
+const mobMenu = document.getElementById('mobMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mobMenu.classList.toggle('open');
+  document.body.style.overflow = mobMenu.classList.contains('open') ? 'hidden' : '';
 });
 
 // ── Scroll reveal ──
