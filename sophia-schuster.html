@@ -10,13 +10,13 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#07060A;
-  --off:#F4F0E8;
-  --wine:#8B1A2A;
-  --wine2:#6A1320;
-  --grey:#1A1720;
-  --muted:rgba(244,240,232,.38);
-  --border:rgba(244,240,232,.1);
+  --black:#1E1612;
+  --off:#FAF7F2;
+  --wine:#B8856E;
+  --wine2:#9A6A55;
+  --grey:#2A1E18;
+  --muted:rgba(250,247,242,.38);
+  --border:rgba(250,247,242,.1);
 }
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--off);font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden}
@@ -28,7 +28,7 @@ nav{
   padding:20px 52px;
   transition:background .3s;
 }
-nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
+nav.solid{background:rgba(30,22,18,.94);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
 .n-logo{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--off);text-decoration:none}
 .n-links{display:flex;gap:36px;list-style:none}
 .n-links a{text-decoration:none;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:color .3s}
@@ -58,7 +58,7 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
 /* SOPHIA text sits behind the photo */
 .h-sophia-bg{
   position:absolute;
-  top:6%;
+  top:-14%;
   left:50%;
   transform:translateX(-50%);
   z-index:1;
@@ -95,7 +95,7 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
   line-height:.9;
   position:relative;z-index:2;
   user-select:none;
-  margin-top:clamp(-30px,-3vw,-8px);
+  margin-top:clamp(-40px,-4vw,-10px);
 }
 
 .h-tagline{
@@ -109,16 +109,18 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
 .h-tagline::before,.h-tagline::after{content:'';flex:1;height:0.5px;background:var(--wine);opacity:.4}
 .h-contact{
   margin-top:16px;position:relative;z-index:2;
-  display:flex;gap:28px;
+  display:flex;align-items:center;gap:0;
   font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.3);
 }
+.h-contact a,.h-contact span{padding:0 14px}
+.h-contact a+a,.h-contact a+span,.h-contact span+span,.h-contact span+a{border-left:0.5px solid rgba(244,240,232,.2)}
 .h-contact a{color:inherit;text-decoration:none;transition:color .3s}
 .h-contact a:hover{color:var(--wine)}
 
 /* ── SECTION SHARED ── */
 .section-dark{background:var(--black);padding:100px 60px}
 .section-light{background:var(--off);padding:100px 60px;color:var(--black)}
-.section-grey{background:#0F0E12;padding:100px 60px}
+.section-grey{background:#261A14;padding:100px 60px}
 .section-wine{background:var(--wine);padding:100px 60px}
 
 .s-eyebrow{
@@ -250,8 +252,8 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
 /* ── INTERESTS ── */
 .int-pills{display:flex;flex-wrap:wrap;gap:10px}
 .pill{
-  padding:12px 26px;border:0.5px solid rgba(244,240,232,.18);
-  font-size:12px;letter-spacing:.08em;color:rgba(244,240,232,.7);
+  padding:12px 26px;border:0.5px solid var(--off);
+  font-size:12px;letter-spacing:.08em;color:var(--black);background:var(--off);
   cursor:default;
   opacity:0;transform:translateY(8px);
   transition:opacity .5s,transform .5s,background .3s,color .3s,border-color .3s;
@@ -264,7 +266,7 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
 .ct-pre{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,240,232,.4);margin-bottom:16px;display:block}
 .ct-h{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,80px);font-style:italic;font-weight:700;color:var(--off);margin-bottom:14px;line-height:1}
 .ct-sub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,240,232,.35);margin-bottom:52px}
-.ct-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.ct-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:48px}
 .ct-btn{
   padding:14px 44px;border:0.5px solid rgba(244,240,232,.3);
   font-size:10px;letter-spacing:.2em;text-transform:uppercase;
@@ -276,19 +278,19 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
 
 /* ── MARQUEE ── */
 .mq-wrap{overflow:hidden;padding:0;background:var(--grey)}
-.mq-inner{display:flex;white-space:nowrap;animation:mq 24s linear infinite}
+.mq-inner{display:flex;white-space:nowrap;animation:mq 12s linear infinite}
 .mq-item{
   font-family:'Playfair Display',serif;
-  font-size:clamp(40px,7vw,90px);
+  font-size:clamp(18px,2.8vw,36px);
   font-weight:700;font-style:italic;
   color:var(--wine);
   -webkit-text-stroke:0;
   text-transform:uppercase;
   letter-spacing:-.02em;
-  padding:14px 48px;
+  padding:10px 32px;
   flex-shrink:0;
 }
-.mq-sep{color:var(--wine);-webkit-text-stroke:0;padding:14px 0}
+.mq-sep{color:var(--wine);-webkit-text-stroke:0;padding:10px 0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── FOOTER ── */
@@ -300,12 +302,6 @@ footer{
 .f-c{font-size:10px;color:rgba(244,240,232,.2);letter-spacing:.12em;text-transform:uppercase}
 
 /* ── FLYING OBJECTS (spawned by JS) ── */
-.flyer{
-  position:fixed;z-index:9999;
-  pointer-events:none;line-height:1;
-  filter:drop-shadow(0 6px 18px rgba(0,0,0,.55));
-  will-change:left,top,transform,opacity;
-}
 
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
@@ -335,9 +331,10 @@ footer{
 <!-- NAV -->
 <nav id="nav">
   <ul class="n-links">
-    <li><a href="#erfahrung">Erfahrung</a></li>
+    <li><a href="#erfahrung">Erfahrungen</a></li>
     <li><a href="#kompetenzen">Kompetenzen</a></li>
     <li><a href="#bildung">Bildung</a></li>
+    <li><a href="#interessen">Interessen</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
 </nav>
@@ -359,6 +356,7 @@ footer{
     <a href="tel:017647699706">0176 476 997 06</a>
     <a href="mailto:sophia.schuster1@gmail.com">sophia.schuster1@gmail.com</a>
     <span>Hamburg</span>
+    <span>05.07.2001</span>
   </div>
 
 </section>
@@ -376,7 +374,7 @@ footer{
 <!-- ERFAHRUNG (light section) -->
 <section class="section-light" id="erfahrung">
   <span class="s-eyebrow">01</span>
-  <h2 class="s-title">Berufserfahrung</h2>
+  <h2 class="s-title" style="color:#1E1612">Berufserfahrung</h2>
   <div class="tl">
 
     <div class="tl-item">
@@ -455,7 +453,8 @@ footer{
       <div class="tl-role">Gastgeberin in der Elbphilharmonie</div>
       <div class="tl-firm">eventteam Hamburg</div>
       <ul class="buls">
-        <li>Gastgeberin in der Elbphilharmonie Hamburg</li>
+        <li>Empfang der Gäste</li>
+        <li>Service an der Bar, Garderobe und Einlass</li>
       </ul>
     </div>
 
@@ -465,17 +464,17 @@ footer{
 <!-- KOMPETENZEN (dark) -->
 <section class="section-dark" id="kompetenzen">
   <span class="s-eyebrow">02</span>
-  <h2 class="s-title">Kompetenzen</h2>
+  <h2 class="s-title" style="color:#FAF7F2">Kompetenzen</h2>
   <div class="k-grid">
     <div class="k-card">
       <div class="k-num">01</div>
       <div class="k-name">Kreative Produktion</div>
-      <div class="k-text">Fotoshooting-Planung, Modelcasting, Locationscouting, Artbuying, Callsheet-Erstellung, Video Content (TikTok), Styling-Support</div>
+      <div class="k-text">Fotoshooting-Planung: Modelcasting, Locationscouting, Artbuying, Video Content (TikTok), Styling-Support</div>
     </div>
     <div class="k-card">
       <div class="k-num">02</div>
       <div class="k-name">Projektmanagement</div>
-      <div class="k-text">Timing- und Deadline-Management, Koordination externer Dienstleister, Projektkalkulation, On-Set Supervision, Warenwirtschaftssysteme</div>
+      <div class="k-text">Timing- und Deadline-Management, Koordination externer Dienstleister, Projektkalkulation, On-Set Supervision, Warenwirtschaftssysteme, Kundenbetreuung, Callsheet-Erstellung</div>
     </div>
     <div class="k-card">
       <div class="k-num">03</div>
@@ -484,8 +483,8 @@ footer{
     </div>
     <div class="k-card">
       <div class="k-num">04</div>
-      <div class="k-name">Kommunikation</div>
-      <div class="k-text">Kundenbetreuung, Koordination aller Fachbereiche, Teamkommunikation</div>
+      <div class="k-name">KI-gestützte Webentwicklung (Vibe Coding)</div>
+      <div class="k-text">Konzeption und Umsetzung von Landingpages und digitalen Inhalten mithilfe von Claude AI; inklusive Prompt Engineering, UI/UX-Entscheidungen sowie visueller Gestaltung in HTML &amp; CSS</div>
     </div>
   </div>
 
@@ -515,7 +514,7 @@ footer{
 <!-- BILDUNG (light) -->
 <section class="section-light" id="bildung">
   <span class="s-eyebrow">03</span>
-  <h2 class="s-title">Bildungsweg</h2>
+  <h2 class="s-title" style="color:#1E1612">Bildungsweg</h2>
   <div class="edu-grid">
     <!-- top-left: Studium -->
     <div class="edu-card">
@@ -552,13 +551,13 @@ footer{
 <!-- INTERESSEN (dark) -->
 <section class="section-dark" id="interessen">
   <span class="s-eyebrow">04</span>
-  <h2 class="s-title">Meine Interessen</h2>
+  <h2 class="s-title" style="color:#FAF7F2">Meine Interessen</h2>
   <div class="int-pills">
-    <span class="pill">🩰 Barre Pilates</span>
-    <span class="pill">💍 Schmuckdesign</span>
-    <span class="pill">👗 Fashion &amp; Beauty</span>
-    <span class="pill">✈️ Reisen</span>
-    <span class="pill">🌸 Female Empowerment</span>
+    <span class="pill">Barre Pilates</span>
+    <span class="pill">Schmuckdesign</span>
+    <span class="pill">Fashion &amp; Beauty</span>
+    <span class="pill">Reisen</span>
+    <span class="pill">Female Empowerment</span>
   </div>
 </section>
 
@@ -574,7 +573,7 @@ footer{
 
 <footer>
   <span class="f-n">Sophia Schuster</span>
-  <span class="f-c">Impressum · 2026 — Hamburg</span>
+  <span class="f-c">2026 — Hamburg</span>
 </footer>
 
 <script>
@@ -602,66 +601,6 @@ document.querySelectorAll('.edu-card').forEach((el,i) => { el.dataset.d = i*90; 
 document.querySelectorAll('.pill').forEach((el,i)     => { el.dataset.d = i*60;  obs.observe(el); });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ── Flying objects on scroll ──
-const EMOJIS = ['📷','🌸','💍','🌹','🎬','🎞️','✨','⭐','🌺','📋','🎀','🌷'];
-
-function spawnFlyer() {
-  const emoji  = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-  const size   = 38 + Math.random() * 52;   // 38–90px
-  const dur    = 1300 + Math.random() * 900; // 1.3–2.2s
-
-  // pick an edge: 0=left 1=right 2=top 3=bottom
-  const edge   = Math.floor(Math.random() * 4);
-  const W = window.innerWidth, H = window.innerHeight;
-  let x0, y0;
-  switch(edge) {
-    case 0: x0 = -size * 2;   y0 = Math.random() * H; break;
-    case 1: x0 = W + size;    y0 = Math.random() * H; break;
-    case 2: x0 = Math.random() * W; y0 = -size * 2;   break;
-    default:x0 = Math.random() * W; y0 = H + size;    break;
-  }
-
-  // travel toward roughly the opposite side + randomness
-  const dx = (W/2 - x0) * (1.6 + Math.random() * .8) + (Math.random()-.5)*360;
-  const dy = (H/2 - y0) * (1.6 + Math.random() * .8) + (Math.random()-.5)*360;
-  const rot0 = (Math.random()-.5) * 90;
-  const rot1 = rot0 + (Math.random()-.5) * 600;
-
-  const el = document.createElement('div');
-  el.className = 'flyer';
-  el.textContent = emoji;
-  el.style.cssText =
-    `left:${x0}px;top:${y0}px;font-size:${size}px;` +
-    `transform:rotate(${rot0}deg);opacity:.9;`;
-  document.body.appendChild(el);
-
-  // two-frame trick to allow CSS transition to fire
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    el.style.transition =
-      `left ${dur}ms cubic-bezier(.25,.46,.45,.94),` +
-      `top ${dur}ms cubic-bezier(.25,.46,.45,.94),` +
-      `transform ${dur}ms cubic-bezier(.25,.46,.45,.94),` +
-      `opacity 280ms ease ${(dur * .78)|0}ms`;
-    el.style.left      = `${x0 + dx}px`;
-    el.style.top       = `${y0 + dy}px`;
-    el.style.transform = `rotate(${rot1}deg)`;
-    el.style.opacity   = '0';
-  }));
-
-  setTimeout(() => el.remove(), dur + 350);
-}
-
-// trigger every ~280px scrolled
-let prevY = 0, acc = 0;
-window.addEventListener('scroll', () => {
-  acc += Math.abs(scrollY - prevY);
-  prevY = scrollY;
-  if (acc >= 280) {
-    acc = 0;
-    spawnFlyer();
-    if (Math.random() > .55) setTimeout(spawnFlyer, 180);
-  }
-}, {passive:true});
 </script>
 </body>
 </html>
