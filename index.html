@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sophia Schuster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#1E1612;
+  --off:#FAF7F2;
+  --wine:#B8856E;
+  --wine2:#9A6A55;
+  --grey:#2A1E18;
+  --muted:rgba(250,247,242,.38);
+  --border:rgba(250,247,242,.1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--off);font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;justify-content:center;align-items:center;
+  padding:20px 52px;
+  transition:background .3s;
+}
+nav.solid{background:rgba(30,22,18,.94);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
+.n-logo{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--off);text-decoration:none}
+.n-links{display:flex;gap:36px;list-style:none}
+.n-links a{text-decoration:none;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.n-links a:hover{color:var(--off)}
+.n-cta{padding:9px 22px;background:var(--wine);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--off);text-decoration:none;transition:background .3s}
+.n-cta:hover{background:var(--wine2)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+  background:var(--black);
+  padding:90px 0 50px;
+  gap:0;
+}
+
+/* ── HERO STACK (photo in front of SOPHIA text) ── */
+.h-stack{
+  position:relative;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+/* SOPHIA text sits behind the photo */
+.h-sophia-bg{
+  position:absolute;
+  top:-14%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(70px,14vw,200px);
+  font-weight:700;
+  color:var(--off);
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+  line-height:.9;
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+}
+/* photo cutout on top */
+.h-photo{
+  position:relative;
+  z-index:2;
+  width:clamp(200px,26vw,370px);
+  flex-shrink:0;
+}
+.h-photo img{
+  width:100%;
+  display:block;
+}
+
+.h-bottom{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(70px,14vw,200px);
+  font-weight:700;
+  color:var(--off);
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+  line-height:.9;
+  position:relative;z-index:2;
+  user-select:none;
+  margin-top:clamp(-40px,-4vw,-10px);
+}
+
+.h-tagline{
+  position:relative;z-index:2;
+  margin-top:28px;
+  font-size:clamp(11px,1.2vw,14px);
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--wine);
+  display:flex;align-items:center;gap:16px;
+}
+.h-tagline::before,.h-tagline::after{content:'';flex:1;height:0.5px;background:var(--wine);opacity:.4}
+.h-contact{
+  margin-top:16px;position:relative;z-index:2;
+  display:flex;align-items:center;gap:0;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.3);
+}
+.h-contact a,.h-contact span{padding:0 14px}
+.h-contact a+a,.h-contact a+span,.h-contact span+span,.h-contact span+a{border-left:0.5px solid rgba(244,240,232,.2)}
+.h-contact a{color:inherit;text-decoration:none;transition:color .3s}
+.h-contact a:hover{color:var(--wine)}
+
+/* ── SECTION SHARED ── */
+.section-dark{background:var(--black);padding:100px 60px}
+.section-light{background:var(--off);padding:100px 60px;color:var(--black)}
+.section-grey{background:#261A14;padding:100px 60px}
+.section-wine{background:var(--wine);padding:100px 60px}
+
+.s-eyebrow{
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--wine);margin-bottom:12px;display:block;
+}
+.section-light .s-eyebrow{color:var(--wine2)}
+.s-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,5vw,64px);
+  font-weight:700;letter-spacing:-.02em;
+  line-height:1;margin-bottom:64px;
+}
+.section-light .s-title{color:var(--black)}
+
+/* ── TIMELINE ── */
+.tl{border-left:0.5px solid rgba(244,240,232,.12);margin-left:180px}
+.section-light .tl{border-left-color:rgba(7,6,10,.14);margin-left:180px}
+
+.tl-item{
+  position:relative;padding:44px 0 44px 56px;
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .7s,transform .7s;
+}
+.tl-item.in{opacity:1;transform:translateX(0)}
+.tl-item+.tl-item{border-top:0.5px solid rgba(244,240,232,.08)}
+.section-light .tl-item+.tl-item{border-top-color:rgba(7,6,10,.1)}
+
+.tl-meta{position:absolute;left:-180px;top:44px;width:162px;text-align:right;padding-right:36px}
+.tl-per{
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--wine);
+}
+.section-light .tl-per{color:var(--wine2)}
+.tl-co{font-size:11px;color:rgba(244,240,232,.35);margin-top:4px;line-height:1.4}
+.section-light .tl-co{color:rgba(7,6,10,.4)}
+
+.tl-dot{
+  position:absolute;left:-5px;top:52px;
+  width:9px;height:9px;border-radius:50%;
+  border:0.5px solid rgba(244,240,232,.3);
+  background:var(--black);
+  transition:all .3s;
+}
+.section-light .tl-dot{border-color:rgba(7,6,10,.25);background:var(--off)}
+.tl-item:hover .tl-dot{background:var(--wine);border-color:var(--wine);box-shadow:0 0 0 4px rgba(139,26,42,.2)}
+
+.tl-role{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  margin-bottom:4px;letter-spacing:-.01em;
+}
+.tl-firm{font-size:11px;color:rgba(244,240,232,.35);margin-bottom:14px;letter-spacing:.04em}
+.section-light .tl-firm{color:rgba(7,6,10,.38)}
+
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 9px;border:0.5px solid rgba(244,240,232,.14);
+  color:rgba(244,240,232,.4);
+}
+.section-light .tag{border-color:rgba(7,6,10,.14);color:rgba(7,6,10,.4)}
+
+.buls{list-style:none}
+.buls li{
+  font-size:13px;font-weight:300;
+  color:rgba(244,240,232,.58);
+  padding-left:18px;position:relative;margin-bottom:4px;
+}
+.section-light .buls li{color:rgba(7,6,10,.58)}
+.buls li::before{
+  content:'•';position:absolute;left:0;
+  color:var(--wine);font-size:16px;line-height:1.2;
+}
+.section-light .buls li::before{color:var(--wine2)}
+
+/* ── SKILLS DARK ── */
+.k-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,240,232,.06)}
+.k-card{
+  padding:44px 40px;background:var(--black);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .6s,transform .6s;
+}
+.k-card.in{opacity:1;transform:translateY(0)}
+.k-card:hover{background:#0F0D13}
+.k-num{
+  font-family:'Playfair Display',serif;
+  font-size:11px;color:var(--wine);
+  letter-spacing:.14em;margin-bottom:20px;
+}
+.k-name{
+  font-size:13px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--off);margin-bottom:14px;
+}
+.k-text{font-size:13px;font-weight:300;color:rgba(244,240,232,.5);line-height:1.85}
+
+/* ── LANGUAGES ── */
+.lang-row{display:flex;gap:1px;background:rgba(244,240,232,.06)}
+.lang-block{
+  flex:1;padding:36px 32px;background:var(--black);
+  opacity:0;transform:translateY(12px);
+  transition:opacity .6s,transform .6s;
+}
+.lang-block.in{opacity:1;transform:translateY(0)}
+.lang-flag{font-size:28px;margin-bottom:12px;display:block}
+.lang-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--off);margin-bottom:4px}
+.lang-level{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,240,232,.3);margin-bottom:20px}
+.lbar{height:1px;background:rgba(244,240,232,.1);position:relative}
+.lfill{position:absolute;top:-1px;left:0;height:3px;background:var(--wine);width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.edu-card{
+  padding:40px 36px;border:0.5px solid rgba(7,6,10,.14);
+  background:white;
+  opacity:0;transform:translateY(12px);
+  transition:opacity .6s,transform .6s,border-color .3s;
+}
+.edu-card.in{opacity:1;transform:translateY(0)}
+.edu-card:hover{border-color:rgba(139,26,42,.3)}
+.edu-n{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine2);margin-bottom:20px}
+.edu-deg{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--black);margin-bottom:8px;line-height:1.2}
+.edu-sch{font-size:11px;color:rgba(7,6,10,.4);margin-bottom:6px}
+.edu-per{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(7,6,10,.25)}
+.edu-note{display:inline-block;margin-top:12px;padding:4px 12px;border:0.5px solid var(--wine2);font-size:10px;letter-spacing:.1em;color:var(--wine2)}
+.edu-fr{margin-top:12px;font-size:12px;color:rgba(7,6,10,.38);display:flex;align-items:center;gap:6px}
+
+/* ── INTERESTS ── */
+.int-pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{
+  padding:12px 26px;border:0.5px solid var(--off);
+  font-size:12px;letter-spacing:.08em;color:var(--black);background:var(--off);
+  cursor:default;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .5s,transform .5s,background .3s,color .3s,border-color .3s;
+}
+.pill.in{opacity:1;transform:translateY(0)}
+.pill:hover{background:var(--wine);color:var(--off);border-color:var(--wine)}
+
+/* ── CONTACT ── */
+.ct{text-align:center}
+.ct-pre{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,240,232,.4);margin-bottom:16px;display:block}
+.ct-h{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,80px);font-style:italic;font-weight:700;color:var(--off);margin-bottom:14px;line-height:1}
+.ct-sub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,240,232,.35);margin-bottom:52px}
+.ct-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:48px}
+.ct-btn{
+  padding:14px 44px;border:0.5px solid rgba(244,240,232,.3);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--off);text-decoration:none;transition:background .3s,border-color .3s;
+}
+.ct-btn:hover{background:rgba(244,240,232,.08);border-color:var(--off)}
+.ct-btn.solid{background:var(--off);color:var(--wine);border-color:var(--off)}
+.ct-btn.solid:hover{background:rgba(244,240,232,.88)}
+
+/* ── MARQUEE ── */
+.mq-wrap{overflow:hidden;padding:0;background:var(--grey)}
+.mq-inner{display:flex;white-space:nowrap;animation:mq 12s linear infinite}
+.mq-item{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2.8vw,36px);
+  font-weight:700;font-style:italic;
+  color:var(--wine);
+  -webkit-text-stroke:0;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  padding:10px 32px;
+  flex-shrink:0;
+}
+.mq-sep{color:var(--wine);-webkit-text-stroke:0;padding:10px 0}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── FOOTER ── */
+footer{
+  background:#030205;border-top:0.5px solid var(--border);
+  padding:28px 52px;display:flex;justify-content:space-between;align-items:center;
+}
+.f-n{font-family:'Playfair Display',serif;font-size:14px;color:rgba(244,240,232,.5);letter-spacing:.1em}
+.f-c{font-size:10px;color:rgba(244,240,232,.2);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── FLYING OBJECTS (spawned by JS) ── */
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .n-links,.n-cta{display:none}
+  .h-label{display:none}
+  .h-photo{width:56vw}
+  .h-sophia-bg,.h-bottom{font-size:18vw}
+  .section-dark,.section-light,.section-grey,.section-wine{padding:64px 24px}
+  .tl{margin-left:0;border-left:none}
+  .tl-meta{position:static;text-align:left;width:auto;padding:0 0 8px}
+  .tl-dot{display:none}
+  .tl-item{padding:32px 0}
+  .k-grid{grid-template-columns:1fr}
+  .lang-row{flex-direction:column}
+  .edu-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <ul class="n-links">
+    <li><a href="#erfahrung">Erfahrungen</a></li>
+    <li><a href="#kompetenzen">Kompetenzen</a></li>
+    <li><a href="#bildung">Bildung</a></li>
+    <li><a href="#interessen">Interessen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="h-stack">
+    <div class="h-sophia-bg">SOPHIA</div>
+    <div class="h-photo">
+      <img src="./sophia-cutout.png" alt="Sophia Schuster"/>
+    </div>
+  </div>
+
+  <div class="h-bottom">SCHUSTER</div>
+
+  <div class="h-tagline">Organising the Beautiful</div>
+  <div class="h-contact">
+    <a href="tel:017647699706">0176 476 997 06</a>
+    <a href="mailto:sophia.schuster1@gmail.com">sophia.schuster1@gmail.com</a>
+    <span>Hamburg</span>
+    <span>05.07.2001</span>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq-inner">
+    <span class="mq-item">Bachelor Kommunikations- und Multimediamanagement</span><span class="mq-sep">&nbsp;·&nbsp;</span>
+    <span class="mq-item">Bachelor Kommunikations- und Multimediamanagement</span><span class="mq-sep">&nbsp;·&nbsp;</span>
+    <span class="mq-item">Bachelor Kommunikations- und Multimediamanagement</span><span class="mq-sep">&nbsp;·&nbsp;</span>
+    <span class="mq-item">Bachelor Kommunikations- und Multimediamanagement</span><span class="mq-sep">&nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<!-- ERFAHRUNG (light section) -->
+<section class="section-light" id="erfahrung">
+  <span class="s-eyebrow">01</span>
+  <h2 class="s-title" style="color:#1E1612">Berufserfahrung</h2>
+  <div class="tl">
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">08–09 / 2025</div><div class="tl-co">Hans Conzen Kosmetik GmbH, Tangstedt</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Praktikantin Marketing</div>
+      <div class="tl-firm">Hans Conzen Kosmetik GmbH</div>
+      <ul class="buls">
+        <li>Marketing für die Premium-Haarpflege- und Stylingmarke GLYNT</li>
+        <li>TikTok-Launch und Erstellung von Video Content</li>
+        <li>Social Media Kampagnen</li>
+        <li>SEO</li>
+        <li>Community Management</li>
+        <li>Marktanalysen</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">11/2024–12/2025</div><div class="tl-co">Impuls Personal GmbH, Düsseldorf</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Werkstudentin</div>
+      <div class="tl-firm">Impuls Personal GmbH</div>
+      <ul class="buls">
+        <li>Unterstützung im Bewerbermanagement</li>
+        <li>Erstellung von Vertragsunterlagen und Profilen</li>
+        <li>Erstellung und Veröffentlichung von Stellenanzeigen</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">02–08 / 2023</div><div class="tl-co">Die Kameradinnen Creative Content GmbH, Hamburg</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Projektmanagement &amp; Casting</div>
+      <div class="tl-firm">Die Kameradinnen Creative Content GmbH</div>
+      <ul class="buls">
+        <li>Eigenverantwortliche Planung und Organisation von Fotoshootings</li>
+        <li>Modelcasting</li>
+        <li>Locationscouting</li>
+        <li>Enge Zusammenarbeit mit dem Kreationsteam und Kunden</li>
+        <li>Erstellung, Pflege und Überwachung von Projekt-Timings und Deadlines</li>
+        <li>Abstimmung mit externen Dienstleistern (Fotografen, Locations, Technik)</li>
+        <li>Organisation und Supervision vor Ort während der Produktion</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">10/2020–01/2023</div><div class="tl-co">Die Kameradinnen Creative Content GmbH, Hamburg</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Auszubildende — Kauffrau für audiovisuelle Medien</div>
+      <div class="tl-firm">Die Kameradinnen Creative Content GmbH · Abschluss 1,2</div>
+      <ul class="buls">
+        <li>Planung und Organisation von Fotoshootings inkl. Erstellung von Callsheets</li>
+        <li>Mitwirkung bei Projektkalkulation, Artbuying, Locationscouting und Casting</li>
+        <li>Koordination aller Fachbereiche und Ansprechpartnerin für Kunden</li>
+        <li>Unterstützung bei Styling- und Produktionsaufgaben</li>
+        <li>Umgang mit dem Warenwirtschaftssystem</li>
+        <li>Betreuung der Produktionen vor Ort</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">05–06 / 2022</div><div class="tl-co">Formidable Producers GmbH, Barcelona</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Praktikantin — Barcelona</div>
+      <div class="tl-firm">Formidable Producers GmbH</div>
+      <ul class="buls">
+        <li>Casting</li>
+        <li>Locationscouting</li>
+        <li>Betreuung der Produktionen vor Ort</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta"><div class="tl-per">08/2019–02/2020</div><div class="tl-co">eventteam, Hamburg</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-role">Gastgeberin in der Elbphilharmonie</div>
+      <div class="tl-firm">eventteam Hamburg</div>
+      <ul class="buls">
+        <li>Empfang der Gäste</li>
+        <li>Service an der Bar, Garderobe und Einlass</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- KOMPETENZEN (dark) -->
+<section class="section-dark" id="kompetenzen">
+  <span class="s-eyebrow">02</span>
+  <h2 class="s-title" style="color:#FAF7F2">Kompetenzen</h2>
+  <div class="k-grid">
+    <div class="k-card">
+      <div class="k-num">01</div>
+      <div class="k-name">Kreative Produktion</div>
+      <div class="k-text">Fotoshooting-Planung: Modelcasting, Locationscouting, Artbuying, Video Content (TikTok), Styling-Support</div>
+    </div>
+    <div class="k-card">
+      <div class="k-num">02</div>
+      <div class="k-name">Projektmanagement</div>
+      <div class="k-text">Timing- und Deadline-Management, Koordination externer Dienstleister, Projektkalkulation, On-Set Supervision, Warenwirtschaftssysteme, Kundenbetreuung, Callsheet-Erstellung</div>
+    </div>
+    <div class="k-card">
+      <div class="k-num">03</div>
+      <div class="k-name">Marketing &amp; Social Media</div>
+      <div class="k-text">Influencer Marketing, Community Management, Social Media Kampagnen, SEO-Grundlagen, Kampagnenplanung</div>
+    </div>
+    <div class="k-card">
+      <div class="k-num">04</div>
+      <div class="k-name">KI-gestützte Webentwicklung (Vibe Coding)</div>
+      <div class="k-text">Konzeption und Umsetzung von Landingpages und digitalen Inhalten mithilfe von Claude AI; inklusive Prompt Engineering, UI/UX-Entscheidungen sowie visueller Gestaltung in HTML &amp; CSS</div>
+    </div>
+  </div>
+
+  <!-- Languages -->
+  <div style="margin-top:52px">
+    <h3 style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--off);letter-spacing:-.02em;margin-bottom:16px">Sprachkenntnisse</h3>
+    <div class="lang-row">
+      <div class="lang-block">
+        <div class="lang-name">Deutsch</div>
+        <div class="lang-level">Muttersprache</div>
+        <div class="lbar"><div class="lfill" data-w="100%"></div></div>
+      </div>
+      <div class="lang-block">
+        <div class="lang-name">Englisch</div>
+        <div class="lang-level">Verhandlungssicher</div>
+        <div class="lbar"><div class="lfill" data-w="87%"></div></div>
+      </div>
+      <div class="lang-block">
+        <div class="lang-name">Spanisch</div>
+        <div class="lang-level">Grundkenntnisse</div>
+        <div class="lbar"><div class="lfill" data-w="35%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BILDUNG (light) -->
+<section class="section-light" id="bildung">
+  <span class="s-eyebrow">03</span>
+  <h2 class="s-title" style="color:#1E1612">Bildungsweg</h2>
+  <div class="edu-grid">
+    <!-- top-left: Studium -->
+    <div class="edu-card">
+      <div class="edu-n">Studium</div>
+      <div class="edu-deg">Kommunikations- und Multimediamanagement (B.A.)</div>
+      <div class="edu-sch">Hochschule Düsseldorf</div>
+      <div class="edu-per">10 / 2023 — 03 / 2027</div>
+    </div>
+    <!-- top-right: Auslandssemester -->
+    <div class="edu-card">
+      <div class="edu-n">Auslandssemester</div>
+      <div class="edu-deg">Business Administration (B.A.)</div>
+      <div class="edu-sch">Excelia Group, La Rochelle, Frankreich</div>
+      <div class="edu-per">01 / 2026 — 05 / 2026</div>
+    </div>
+    <!-- bottom-left: Ausbildung -->
+    <div class="edu-card">
+      <div class="edu-n">Berufsausbildung</div>
+      <div class="edu-deg">Kauffrau für audiovisuelle Medien</div>
+      <div class="edu-sch">Berufliche Schule für Medien und Kommunikation, Hamburg</div>
+      <div class="edu-per">10 / 2020 — 01 / 2023</div>
+      <span class="edu-note">Abschlussnote 1,2</span>
+    </div>
+    <!-- bottom-right: Abitur -->
+    <div class="edu-card">
+      <div class="edu-n">Abitur</div>
+      <div class="edu-deg">Allgemeine Hochschulreife</div>
+      <div class="edu-sch">Gymnasium Klosterschule, Hamburg</div>
+      <div class="edu-per">08 / 2011 — 06 / 2019</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESSEN (dark) -->
+<section class="section-dark" id="interessen">
+  <span class="s-eyebrow">04</span>
+  <h2 class="s-title" style="color:#FAF7F2">Meine Interessen</h2>
+  <div class="int-pills">
+    <span class="pill">Barre Pilates</span>
+    <span class="pill">Schmuckdesign</span>
+    <span class="pill">Fashion &amp; Beauty</span>
+    <span class="pill">Reisen</span>
+    <span class="pill">Female Empowerment</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-dark ct" id="kontakt">
+  <span class="ct-pre">Get in touch</span>
+  <h2 class="ct-h">Let's work<br>together.</h2>
+  <div class="ct-btns">
+    <a href="mailto:sophia.schuster1@gmail.com" class="ct-btn solid">E-Mail schreiben</a>
+    <a href="tel:017647699706" class="ct-btn">0176 476 997 06</a>
+  </div>
+</section>
+
+<footer>
+  <span class="f-n">Sophia Schuster</span>
+  <span class="f-c">2026 — Hamburg</span>
+</footer>
+
+<script>
+// ── Nav ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60), {passive:true});
+
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    setTimeout(() => {
+      el.classList.add('in');
+      el.querySelectorAll('.lfill').forEach(f => f.style.width = f.dataset.w);
+    }, parseInt(el.dataset.d || 0));
+    obs.unobserve(el);
+  });
+}, {threshold: .1});
+
+document.querySelectorAll('.tl-item').forEach((el,i) => { el.dataset.d = i*80;  obs.observe(el); });
+document.querySelectorAll('.k-card').forEach((el,i)  => { el.dataset.d = i*100; obs.observe(el); });
+document.querySelectorAll('.lang-block').forEach((el,i)=>{ el.dataset.d = i*110; obs.observe(el); });
+document.querySelectorAll('.edu-card').forEach((el,i) => { el.dataset.d = i*90;  obs.observe(el); });
+document.querySelectorAll('.pill').forEach((el,i)     => { el.dataset.d = i*60;  obs.observe(el); });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+</script>
+</body>
+</html>
