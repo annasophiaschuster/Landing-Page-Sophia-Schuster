@@ -47,15 +47,21 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
   gap:0;
 }
 
-/* horizontal accent line */
-.hero::before{
-  content:'';position:absolute;
-  top:50%;left:0;right:0;height:0.5px;
-  background:rgba(244,240,232,.06);
-  pointer-events:none;
+/* ── HERO STACK (photo in front of SOPHIA text) ── */
+.h-stack{
+  position:relative;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 }
-
-.h-top{
+/* SOPHIA text sits behind the photo */
+.h-sophia-bg{
+  position:absolute;
+  top:6%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:1;
   font-family:'Playfair Display',serif;
   font-size:clamp(70px,14vw,200px);
   font-weight:700;
@@ -63,51 +69,20 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
   text-transform:uppercase;
   letter-spacing:-.04em;
   line-height:.9;
-  position:relative;z-index:2;
-  user-select:none;
-}
-/* stroke-only duplicate for depth */
-.h-top-ghost{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(70px,14vw,200px);
-  font-weight:700;
-  color:transparent;
-  -webkit-text-stroke:0.5px rgba(244,240,232,.12);
-  text-transform:uppercase;
-  letter-spacing:-.04em;
-  line-height:.9;
-  position:absolute;
-  top:calc(3px + 1vw);left:calc(4px + 0.5vw);
-  z-index:1;
-  user-select:none;
+  white-space:nowrap;
   pointer-events:none;
+  user-select:none;
 }
-
-.h-photo-row{
-  position:relative;z-index:2;
-  display:flex;align-items:flex-end;justify-content:center;
-  gap:clamp(20px,4vw,72px);
-  width:100%;padding:0 5vw;
-}
-.h-label{
-  flex:1;
-  font-size:clamp(8px,.9vw,11px);
-  letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(244,240,232,.35);line-height:1.8;
-}
-.h-label b{display:block;color:rgba(244,240,232,.6);letter-spacing:.14em}
-.h-label.r{text-align:right}
+/* photo cutout on top */
 .h-photo{
-  flex:0 0 auto;
-  width:clamp(180px,26vw,360px);
-  aspect-ratio:.72;
-  overflow:hidden;position:relative;
+  position:relative;
+  z-index:2;
+  width:clamp(200px,26vw,370px);
+  flex-shrink:0;
 }
-.h-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-/* wine line accent on photo */
-.h-photo::before{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:3px;background:var(--wine);z-index:1;
+.h-photo img{
+  width:100%;
+  display:block;
 }
 
 .h-bottom{
@@ -120,7 +95,7 @@ nav.solid{background:rgba(7,6,10,.94);backdrop-filter:blur(12px);border-bottom:0
   line-height:.9;
   position:relative;z-index:2;
   user-select:none;
-  margin-top:clamp(-24px,-2vw,-6px);
+  margin-top:clamp(-30px,-3vw,-8px);
 }
 
 .h-tagline{
@@ -342,7 +317,7 @@ footer{
   .n-links,.n-cta{display:none}
   .h-label{display:none}
   .h-photo{width:56vw}
-  .h-top,.h-bottom{font-size:18vw}
+  .h-sophia-bg,.h-bottom{font-size:18vw}
   .section-dark,.section-light,.section-grey,.section-wine{padding:64px 24px}
   .tl{margin-left:0;border-left:none}
   .tl-meta{position:static;text-align:left;width:auto;padding:0 0 8px}
@@ -370,21 +345,14 @@ footer{
 <!-- HERO -->
 <section class="hero">
 
-  <div style="position:relative">
-    <div class="h-top-ghost">SOPHIA</div>
-    <div class="h-top">SOPHIA</div>
-  </div>
-
-  <div class="h-photo-row">
+  <div class="h-stack">
+    <div class="h-sophia-bg">SOPHIA</div>
     <div class="h-photo">
-      <img src="./sophia-photo.jpg" alt="Sophia Schuster"/>
+      <img src="./sophia-cutout.png" alt="Sophia Schuster"/>
     </div>
   </div>
 
-  <div style="position:relative">
-    <div class="h-top-ghost" style="top:calc(3px + 1vw);left:calc(4px + 0.5vw)">SCHUSTER</div>
-    <div class="h-bottom">SCHUSTER</div>
-  </div>
+  <div class="h-bottom">SCHUSTER</div>
 
   <div class="h-tagline">Organising the Beautiful</div>
   <div class="h-contact">
