@@ -236,18 +236,18 @@ nav.solid{background:rgba(30,22,18,.94);backdrop-filter:blur(12px);border-bottom
 /* ── EDUCATION ── */
 .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .edu-card{
-  padding:40px 36px;border:0.5px solid rgba(7,6,10,.14);
-  background:white;
+  padding:40px 36px;border:0.5px solid rgba(244,240,232,.12);
+  background:rgba(244,240,232,.04);
   opacity:0;transform:translateY(12px);
   transition:opacity .6s,transform .6s,border-color .3s;
 }
 .edu-card.in{opacity:1;transform:translateY(0)}
-.edu-card:hover{border-color:rgba(139,26,42,.3)}
-.edu-n{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine2);margin-bottom:20px}
-.edu-deg{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--black);margin-bottom:8px;line-height:1.2}
-.edu-sch{font-size:11px;color:rgba(7,6,10,.4);margin-bottom:6px}
-.edu-per{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(7,6,10,.25)}
-.edu-note{display:inline-block;margin-top:12px;padding:4px 12px;border:0.5px solid var(--wine2);font-size:10px;letter-spacing:.1em;color:var(--wine2)}
+.edu-card:hover{border-color:rgba(184,133,110,.3)}
+.edu-n{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-bottom:20px}
+.edu-deg{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--off);margin-bottom:8px;line-height:1.2}
+.edu-sch{font-size:11px;color:rgba(244,240,232,.4);margin-bottom:6px}
+.edu-per{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.25)}
+.edu-note{display:inline-block;margin-top:12px;padding:4px 12px;border:0.5px solid var(--wine);font-size:10px;letter-spacing:.1em;color:var(--wine)}
 .edu-fr{margin-top:12px;font-size:12px;color:rgba(7,6,10,.38);display:flex;align-items:center;gap:6px}
 
 /* ── INTERESTS ── */
@@ -533,10 +533,10 @@ footer{
   </div>
 </section>
 
-<!-- BILDUNG (light) -->
-<section class="section-light" id="bildung">
+<!-- BILDUNG (dark) -->
+<section class="section-dark" id="bildung">
   <span class="s-eyebrow">02</span>
-  <h2 class="s-title" style="color:#1E1612">Bildungsweg</h2>
+  <h2 class="s-title" style="color:var(--off)">Bildungsweg</h2>
   <div class="edu-grid">
     <!-- top-left: Studium -->
     <div class="edu-card">
@@ -570,10 +570,10 @@ footer{
   </div>
 </section>
 
-<!-- KOMPETENZEN (dark) -->
-<section class="section-dark" id="kompetenzen">
+<!-- KOMPETENZEN (light) -->
+<section class="section-light" id="kompetenzen">
   <span class="s-eyebrow">03</span>
-  <h2 class="s-title" style="color:#FAF7F2">Kompetenzen</h2>
+  <h2 class="s-title" style="color:#1E1612">Kompetenzen</h2>
   <div class="k-grid">
     <div class="k-card">
       <div class="k-num">01</div>
